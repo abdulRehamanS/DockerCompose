@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  app:
+    image: spring-boot-mysql-app
+    ports:
+      - "2020:2020"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/spring
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: 4562
+
+    depends_on:
+      - db
+  db:
+    image:  mysql:8.0.27
+    environment:
+      DATASOURCE_HOST: docker-mysql
+      DATASOURCE_PORT: 3306
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: spring
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: 4562
+
